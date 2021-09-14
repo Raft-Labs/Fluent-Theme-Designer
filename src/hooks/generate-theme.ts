@@ -9,15 +9,15 @@ import {
 } from "@fluentui/react";
 
 const generateTheme = (
-  primaryColor: string,
-  textColor: string,
-  backgroundColor: string
+  primaryColor?: string,
+  textColor?: string,
+  backgroundColor?: string
 ): Theme => {
   const themeRules = themeRulesStandardCreator();
   const colors = {
-    pColor: getColorFromString(primaryColor)!,
-    tColor: getColorFromString(textColor)!,
-    bColor: getColorFromString(backgroundColor)!,
+    pColor: getColorFromString(primaryColor || "#0078d4")!,
+    tColor: getColorFromString(textColor || "#323130")!,
+    bColor: getColorFromString(backgroundColor || "#ffffff")!,
   };
 
   const currentIsDark = isDark(
@@ -25,6 +25,7 @@ const generateTheme = (
   );
 
   ThemeGenerator.insureSlots(themeRules, currentIsDark);
+
   ThemeGenerator.setSlot(
     themeRules[BaseSlots[BaseSlots.primaryColor]],
     colors.pColor,

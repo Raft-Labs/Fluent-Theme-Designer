@@ -2,7 +2,6 @@ import {
   Async,
   BaseSlots,
   createTheme,
-  FabricSlots,
   getColorFromString,
   IColor,
   IconButton,
@@ -11,6 +10,7 @@ import {
   ITheme,
   IThemeRules,
   mergeStyles,
+  PrimaryButton,
   Stack,
   Text,
   ThemeGenerator,
@@ -19,6 +19,7 @@ import {
 } from "@fluentui/react";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
 import React from "react";
+import { IPrimaryTheme, useTheme } from "../../context/ThemeContext";
 import { AccessibilityChecker } from "./AccessibilityChecker";
 import { MainPanelWidth } from "./MainPanelStyles";
 import { Samples } from "./Samples";
@@ -85,12 +86,27 @@ const Main = (props: IStackProps) => (
   />
 );
 
+const GlobalChanger = ({
+  primaryColor,
+  textColor,
+  backgroundColor,
+}: IPrimaryTheme) => {
+  const { setPrimaryTheme } = useTheme();
+  console.log({ primaryColor, textColor, backgroundColor });
+  const applyChange = () =>
+    setPrimaryTheme({
+      primaryColor: `#${primaryColor}`,
+      textColor: `#${textColor}`,
+      backgroundColor: `#${backgroundColor}`,
+    });
+  return <PrimaryButton text="Apply Change Globaly" onClick={applyChange} />;
+};
+
 export class ThemingDesigner extends React.Component<
   {},
   IThemingDesignerState
 > {
   private _colorChangeTimeout: number = 0;
-  private _fabricPaletteColorChangeTimeout: number = 0;
   private _async: Async;
 
   constructor(props: {}) {
@@ -142,6 +158,15 @@ export class ThemingDesigner extends React.Component<
               onColorChange={this._onBkgColorPickerChange}
               label={"Background color"}
             />
+            <Stack>
+              <Stack.Item>
+                <GlobalChanger
+                  backgroundColor={this.state.backgroundColor.hex}
+                  primaryColor={this.state.primaryColor.hex}
+                  textColor={this.state.textColor.hex}
+                />
+              </Stack.Item>
+            </Stack>
           </Sidebar>
           <Main>
             <ThemeProvider theme={this.state.theme}>
@@ -159,40 +184,6 @@ export class ThemingDesigner extends React.Component<
       </Page>
     );
   }
-
-  private _onFabricPaletteColorChange = (
-    newColor: IColor | string,
-    fabricSlot: FabricSlots
-  ) => {
-    if (this._fabricPaletteColorChangeTimeout) {
-      this._async.clearTimeout(this._fabricPaletteColorChangeTimeout);
-    }
-    if (!this.state.themeRules) {
-      return;
-    }
-    this._fabricPaletteColorChangeTimeout = this._async.setTimeout(() => {
-      const { themeRules } = this.state;
-      if (themeRules) {
-        const currentIsDark = isDark(
-          themeRules[FabricSlots[fabricSlot]].color!
-        );
-        ThemeGenerator.setSlot(
-          themeRules[FabricSlots[fabricSlot]],
-          newColor,
-          currentIsDark,
-          true,
-          true
-        );
-        if (
-          currentIsDark !== isDark(themeRules[FabricSlots[fabricSlot]].color!)
-        ) {
-          // isInverted got swapped, so need to refresh slots with new shading rules
-          ThemeGenerator.insureSlots(themeRules, currentIsDark);
-        }
-      }
-      this.setState({ themeRules: themeRules }, this._makeNewTheme);
-    }, 20);
-  };
 
   private _onPrimaryColorPickerChange = (newColor: IColor | undefined) => {
     this._onColorChange(
