@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Theme, ThemeProvider } from "@fluentui/react";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
+import Dashboard from "./components/Dashboard";
+import { ThemingDesigner } from "./components/ThemingDesigner";
+import generateTheme from "./hooks/generate-theme";
 
 function App() {
+  const [theme, setTheme] = useState<Theme>();
+  useEffect(() => {
+    setTheme(generateTheme("#0078d4", "#323130", "#ffffff"));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={Dashboard} />
+          <Route path="/designer" component={ThemingDesigner} />
+        </Switch>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
