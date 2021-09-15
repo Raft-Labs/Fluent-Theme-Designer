@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/Fluent-Theme-Designer/static/css/main.e61e90d0.chunk.css",
-    "main.js": "/Fluent-Theme-Designer/static/js/main.fdaedd9c.chunk.js",
-    "main.js.map": "/Fluent-Theme-Designer/static/js/main.fdaedd9c.chunk.js.map",
+    "main.js": "/Fluent-Theme-Designer/static/js/main.6de8dce2.chunk.js",
+    "main.js.map": "/Fluent-Theme-Designer/static/js/main.6de8dce2.chunk.js.map",
     "runtime-main.js": "/Fluent-Theme-Designer/static/js/runtime-main.ebc65cab.js",
     "runtime-main.js.map": "/Fluent-Theme-Designer/static/js/runtime-main.ebc65cab.js.map",
-    "static/js/2.300135c0.chunk.js": "/Fluent-Theme-Designer/static/js/2.300135c0.chunk.js",
-    "static/js/2.300135c0.chunk.js.map": "/Fluent-Theme-Designer/static/js/2.300135c0.chunk.js.map",
+    "static/js/2.787bf10c.chunk.js": "/Fluent-Theme-Designer/static/js/2.787bf10c.chunk.js",
+    "static/js/2.787bf10c.chunk.js.map": "/Fluent-Theme-Designer/static/js/2.787bf10c.chunk.js.map",
     "static/js/3.4d9fcbc4.chunk.js": "/Fluent-Theme-Designer/static/js/3.4d9fcbc4.chunk.js",
     "static/js/3.4d9fcbc4.chunk.js.map": "/Fluent-Theme-Designer/static/js/3.4d9fcbc4.chunk.js.map",
     "index.html": "/Fluent-Theme-Designer/index.html",
     "static/css/main.e61e90d0.chunk.css.map": "/Fluent-Theme-Designer/static/css/main.e61e90d0.chunk.css.map",
-    "static/js/2.300135c0.chunk.js.LICENSE.txt": "/Fluent-Theme-Designer/static/js/2.300135c0.chunk.js.LICENSE.txt"
+    "static/js/2.787bf10c.chunk.js.LICENSE.txt": "/Fluent-Theme-Designer/static/js/2.787bf10c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ebc65cab.js",
-    "static/js/2.300135c0.chunk.js",
+    "static/js/2.787bf10c.chunk.js",
     "static/css/main.e61e90d0.chunk.css",
-    "static/js/main.fdaedd9c.chunk.js"
+    "static/js/main.6de8dce2.chunk.js"
   ]
 }
