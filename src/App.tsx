@@ -1,6 +1,6 @@
 import { Theme, ThemeProvider } from "@fluentui/react";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
@@ -30,7 +30,7 @@ function App() {
   return (
     <ThemeContext.Provider value={value}>
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
+        <HashRouter>
           <div className="App">
             <Home />
             <Switch>
@@ -38,7 +38,7 @@ function App() {
               <Route path="/designer" component={ThemingDesigner} />
             </Switch>
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </ThemeContext.Provider>
   );
