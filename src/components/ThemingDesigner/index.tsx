@@ -92,7 +92,6 @@ const GlobalChanger = ({
   backgroundColor,
 }: IPrimaryTheme) => {
   const { setPrimaryTheme } = useTheme();
-  console.log({ primaryColor, textColor, backgroundColor });
   const applyChange = () =>
     setPrimaryTheme({
       primaryColor: `#${primaryColor}`,
